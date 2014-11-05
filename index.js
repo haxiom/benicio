@@ -2,7 +2,7 @@ var express  = require('express'),
   Sequelize  = require('sequelize-sqlite').sequelize,
   cors       = require('cors'),
   sqlite     = require('sequelize-sqlite').sqlite,
-  sequelize  = new Sequelize('linkLogs','seanz','', {
+  sequelize  = new Sequelize('linkLogs','','', {
      dialect: 'sqlite',
      storage: 'data.db',
   }),
@@ -32,32 +32,22 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false  }));
 
 function parseReq(req, model) {
-   var query = {};
+   var query = {
+     where: {}
+   };
+
    // Loop through all the parameters in the request's query
    for ( param in req.query ) {
       // Non where parameters start with _
-      if ( param.match(/^_/) ) {
-         switch ( param ) {
-            case "_limit":
-               query.limit = req.query._limit;
-               break;
-            case "_offset":
-               query.offset = req.query._offset;
-               break;
-            case "_order":
-               query.order = req.query._order;
-               break;
-         }
-      // Check model or throw error.
-      //} else if ( !!model ) {
-      //   query.where = query.where || {};
-      //   query.where[param] = req.query[param];
-      // Try it anyways ;)
-      } else {
-         query.where = query.where || {};
+      if ( ! param.match(/^_/) ) {
          query.where[param] = req.query[param];
       }
    }
+
+   query.limit = req.query._limit;
+   query.offset = req.query._offset;
+   query.order = req.query._order;
+
    return query;
 }
 
