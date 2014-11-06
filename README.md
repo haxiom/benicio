@@ -12,7 +12,7 @@ A collector of links.
 To start the service:
 
 ```shell
-node index.js
+npm start
 ```
 
 ### GET
@@ -50,7 +50,7 @@ curl -d "user=joeshmoe" -d "url=http://lejeunerenard.com/" -d "type=article" -d 
 To convert the current logged links:
 
 ```shell
-node bin/convert-to-db.js
+npm run scrape
 ```
 
 ### Open tool
@@ -58,5 +58,5 @@ node bin/convert-to-db.js
 To open the most recent link on haxfred:
 
 ```shell
-node bin/hax-open.js
+npm run open
 ```

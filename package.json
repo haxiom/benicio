@@ -6,6 +6,11 @@
   "repository": {
     "url": "https://github.com/haxiom/benicio"
   },
+  "scripts": {
+    "start": "node index.js",
+    "scrape": "node bin/convert-to-db.js",
+    "open": "node bin/hax-open.js"
+  },
   "main": "index.js",
   "keywords": [
     "irc"
