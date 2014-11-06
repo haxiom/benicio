@@ -1,6 +1,9 @@
-# benicio
+benicio
+=======
 
-Component to log links.
+![benico del toro](https://raw.github.com/haxiom/benicio/development/benicio.jpg)
+
+A collector of links.
 
 ## Rest API
 
