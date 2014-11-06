@@ -51,10 +51,11 @@ function scrape () {
           };
         }
 
+        var beforeMyLocal = true;
         function get_created_date(el) {
           var rawDate = $(el).find('.when').text(),
-          calDate = rawDate.match(/(\d{1,2})\/(\d{1,2})\/(\d{4})/),
-          timeDate = rawDate.match(/(\d{1,2}):(\d{2})([ap]m)/);
+              calDate = rawDate.match(/(\d{1,2})\/(\d{1,2})\/(\d{4})/),
+              timeDate = rawDate.match(/(\d{1,2}):(\d{2})([ap]m)/);
 
           if(timeDate[3] == 'pm') {
             timeDate[1] = parseInt(timeDate[1]) + 12;
@@ -62,7 +63,16 @@ function scrape () {
             timeDate[1] = 0;
           }
 
-          return new Date(calDate[3], calDate[1] - 1, calDate[2], timeDate[1], timeDate[2]);
+          // http://mylocalseos.odotmedia.com is the first link where the date should be parsed differently
+          if ( $( el ).find('.article').attr('href') === "http://mylocalseos.odotmedia.com" ) {
+             beforeMyLocal = false;
+          }
+
+          if (beforeMyLocal) {
+             return new Date(calDate[3], calDate[2], calDate[1] - 1, timeDate[1], timeDate[2]);
+          } else {
+             return new Date(calDate[3], calDate[1] - 1, calDate[2], timeDate[1], timeDate[2]);
+          }
         }
 
         function post_image(el) {
