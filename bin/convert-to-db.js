@@ -9,6 +9,7 @@ var ENDPOINT = HOST + ':' + PORT;
 var url = "http://haxfred.hax10m.com/extras/loglinks";
 
 connect({port: PORT}, function () {
+  this.end();
   scrape();
 })
 .on('error', function () {
