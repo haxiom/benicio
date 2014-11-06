@@ -1,4 +1,4 @@
-# haxfred-irc-link-logging
+# benicio
 
 Component to log links.
 
