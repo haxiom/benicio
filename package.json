@@ -1,22 +1,20 @@
 {
-  "author": "Blade Barringer",
-  "name": "haxfred-irc-link-logging",
-  "description": "Component to log links.",
+  "author": "Haxiom",
+  "name": "benicio",
+  "description": "Service to log links",
   "version": "0.0.1",
   "repository": {
-    "url": "https://github.com/haxiom/haxfred-irc-link-logging"
+    "url": "https://github.com/haxiom/benicio"
   },
-  "main": "./lib/haxfred-irc-link-logging",
+  "main": "index.js",
   "keywords": [
-    "irc",
-    "haxfred"
+    "irc"
   ],
   "bin": {},
   "dependencies": {
     "body-parser": "",
     "cors": "^2.5.0",
     "express": "^4.9.8",
-    "haxfred-irc": "haxiom/haxfred-irc",
     "open": "",
     "request": "^2.46.0",
     "sequelize": "^2.0.0-rc2",
